@@ -1,0 +1,9 @@
+{
+	"namespace": "org.rygn.first_kafka.avro.domain",
+ 	"type": "record",
+ 	"name": "Team",
+ 	"fields": [
+    	{"name": "name", "type": "string"},
+     	{"name": "colors",  "type": "string"}
+ 	]
+}
