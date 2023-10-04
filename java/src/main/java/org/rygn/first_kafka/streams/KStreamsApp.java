@@ -24,7 +24,7 @@ public class KStreamsApp {
 
         StreamsBuilder builder = new StreamsBuilder();
 
-        KStream<String, String> simpleFirstStream = builder.stream("src-topic", Consumed.with(stringSerde, stringSerde));
+        KStream<String, String> simpleFirstStream = builder.stream("src-streams-topic", Consumed.with(stringSerde, stringSerde));
         
         KStream<String, String> upperCasedStream = simpleFirstStream.mapValues(
         		
@@ -33,12 +33,12 @@ public class KStreamsApp {
 				@Override
 				public String apply(String value) {
 	
-					return value.toUpperCase();
+					return "TSE_" + value.toUpperCase();
 				}
         	}
         );
                 
-        upperCasedStream.to("tgt-topic", Produced.with(stringSerde, stringSerde));
+        upperCasedStream.to("tgt-streams-topic", Produced.with(stringSerde, stringSerde));
 
         KafkaStreams kafkaStreams = new KafkaStreams(builder.build(), props);
         kafkaStreams.start();

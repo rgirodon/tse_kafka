@@ -1,6 +1,9 @@
 # launch kafka platform
 confluent local services start
 
+# list topics
+kafka-topics --list --bootstrap-server localhost:9092
+
 # create topic
 kafka-topics --create --topic example-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
 

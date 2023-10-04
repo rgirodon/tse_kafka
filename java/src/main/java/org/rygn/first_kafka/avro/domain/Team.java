@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Team extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -1162364879572722800L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Team\",\"namespace\":\"org.rygn.first_kafka.avro.domain\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"colors\",\"type\":\"string\"}]}");
+  private static final long serialVersionUID = 6275278888122920590L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Team\",\"namespace\":\"org.rygn.first_kafka.avro.domain\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"colors\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -73,6 +73,7 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
 
    private java.lang.CharSequence name;
    private java.lang.CharSequence colors;
+   private java.lang.CharSequence city;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -85,10 +86,12 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
    * All-args constructor.
    * @param name The new value for name
    * @param colors The new value for colors
+   * @param city The new value for city
    */
-  public Team(java.lang.CharSequence name, java.lang.CharSequence colors) {
+  public Team(java.lang.CharSequence name, java.lang.CharSequence colors, java.lang.CharSequence city) {
     this.name = name;
     this.colors = colors;
+    this.city = city;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -98,6 +101,7 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
     switch (field$) {
     case 0: return name;
     case 1: return colors;
+    case 2: return city;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -108,6 +112,7 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
     switch (field$) {
     case 0: name = (java.lang.CharSequence)value$; break;
     case 1: colors = (java.lang.CharSequence)value$; break;
+    case 2: city = (java.lang.CharSequence)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -144,6 +149,23 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
    */
   public void setColors(java.lang.CharSequence value) {
     this.colors = value;
+  }
+
+  /**
+   * Gets the value of the 'city' field.
+   * @return The value of the 'city' field.
+   */
+  public java.lang.CharSequence getCity() {
+    return city;
+  }
+
+
+  /**
+   * Sets the value of the 'city' field.
+   * @param value the value to set.
+   */
+  public void setCity(java.lang.CharSequence value) {
+    this.city = value;
   }
 
   /**
@@ -189,6 +211,7 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
 
     private java.lang.CharSequence name;
     private java.lang.CharSequence colors;
+    private java.lang.CharSequence city;
 
     /** Creates a new Builder */
     private Builder() {
@@ -209,6 +232,10 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
         this.colors = data().deepCopy(fields()[1].schema(), other.colors);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
+      if (isValidValue(fields()[2], other.city)) {
+        this.city = data().deepCopy(fields()[2].schema(), other.city);
+        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
     }
 
     /**
@@ -224,6 +251,10 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
       if (isValidValue(fields()[1], other.colors)) {
         this.colors = data().deepCopy(fields()[1].schema(), other.colors);
         fieldSetFlags()[1] = true;
+      }
+      if (isValidValue(fields()[2], other.city)) {
+        this.city = data().deepCopy(fields()[2].schema(), other.city);
+        fieldSetFlags()[2] = true;
       }
     }
 
@@ -307,6 +338,46 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
       return this;
     }
 
+    /**
+      * Gets the value of the 'city' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getCity() {
+      return city;
+    }
+
+
+    /**
+      * Sets the value of the 'city' field.
+      * @param value The value of 'city'.
+      * @return This builder.
+      */
+    public org.rygn.first_kafka.avro.domain.Team.Builder setCity(java.lang.CharSequence value) {
+      validate(fields()[2], value);
+      this.city = value;
+      fieldSetFlags()[2] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'city' field has been set.
+      * @return True if the 'city' field has been set, false otherwise.
+      */
+    public boolean hasCity() {
+      return fieldSetFlags()[2];
+    }
+
+
+    /**
+      * Clears the value of the 'city' field.
+      * @return This builder.
+      */
+    public org.rygn.first_kafka.avro.domain.Team.Builder clearCity() {
+      city = null;
+      fieldSetFlags()[2] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public Team build() {
@@ -314,6 +385,7 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
         Team record = new Team();
         record.name = fieldSetFlags()[0] ? this.name : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.colors = fieldSetFlags()[1] ? this.colors : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.city = fieldSetFlags()[2] ? this.city : (java.lang.CharSequence) defaultValue(fields()[2]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -350,6 +422,8 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
 
     out.writeString(this.colors);
 
+    out.writeString(this.city);
+
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -361,8 +435,10 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
 
       this.colors = in.readString(this.colors instanceof Utf8 ? (Utf8)this.colors : null);
 
+      this.city = in.readString(this.city instanceof Utf8 ? (Utf8)this.city : null);
+
     } else {
-      for (int i = 0; i < 2; i++) {
+      for (int i = 0; i < 3; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
@@ -370,6 +446,10 @@ public class Team extends org.apache.avro.specific.SpecificRecordBase implements
 
         case 1:
           this.colors = in.readString(this.colors instanceof Utf8 ? (Utf8)this.colors : null);
+          break;
+
+        case 2:
+          this.city = in.readString(this.city instanceof Utf8 ? (Utf8)this.city : null);
           break;
 
         default:

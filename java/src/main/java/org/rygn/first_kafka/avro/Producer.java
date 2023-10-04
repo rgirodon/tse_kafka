@@ -23,10 +23,10 @@ public class Producer {
 
         try (KafkaProducer<String, Team> producer = new KafkaProducer<String, Team>(properties)) {
 
-        	Team team1 = new Team("France", "Bleu, blanc, rouge");        	
+        	Team team1 = new Team("Lakers", "Yellow, purple", "Los Angeles");        	
             ProducerRecord<String, Team> record1 = new ProducerRecord<String, Team>(TOPIC, team1.getName().toString(), team1);
             
-            Team team2 = new Team("Spain", "Rouge, jaune");        	
+            Team team2 = new Team("Knicks", "Blue, orange", "New York");        	
             ProducerRecord<String, Team> record2 = new ProducerRecord<String, Team>(TOPIC, team2.getName().toString(), team2);
             
             producer.send(record1);

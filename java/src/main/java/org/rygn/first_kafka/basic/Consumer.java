@@ -16,6 +16,7 @@ import org.apache.kafka.common.TopicPartition;
 public class Consumer {
 
 	public static void main(String[] args) {
+		
         Properties properties = new Properties();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");

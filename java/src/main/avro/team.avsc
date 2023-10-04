@@ -4,6 +4,7 @@
  	"name": "Team",
  	"fields": [
     	{"name": "name", "type": "string"},
-     	{"name": "colors",  "type": "string"}
+     	{"name": "colors",  "type": "string"},
+     	{"name": "city",  "type": "string"}
  	]
 }

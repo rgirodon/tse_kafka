@@ -57,10 +57,10 @@ public class Consumer {
                 
                 for (ConsumerRecord<String, Team> record: records){
                 	
-                    System.out.println(String.format("Topic - %s, Partition - %d, Value: %s", 
-                    									record.topic(), 
-                    									record.partition(), 
-                    									record.value().getName() + " - " + record.value().getColors()));
+                    System.out.println(String.format("Value: %s", 
+                    									record.value().getName() 
+                    										+ " - " + record.value().getColors()
+                    										+ " - " + record.value().getCity()));
                 }                
             }
         }
