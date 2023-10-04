@@ -1,0 +1,9 @@
+{
+  "namespace": "org.rygn.first_kafka.avro.domain",
+  "name": "Pet",
+  "type": "record",
+  "fields": [
+    {"name": "kind", "type": {"name": "Kind", "type": "enum", "symbols": ["CAT", "DOG", "FISH"]}},
+    {"name": "name", "type": "string"}
+  ]
+}

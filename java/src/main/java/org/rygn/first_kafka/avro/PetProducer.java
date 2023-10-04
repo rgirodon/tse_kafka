@@ -5,12 +5,14 @@ import java.util.Properties;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.rygn.first_kafka.avro.domain.Kind;
+import org.rygn.first_kafka.avro.domain.Pet;
 import org.rygn.first_kafka.avro.domain.Team;
 
 import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
-public class Producer {
+public class PetProducer {
 
 	private static final String TOPIC = "teams-topic";
 	
@@ -21,13 +23,13 @@ public class Producer {
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
         properties.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
 
-        try (KafkaProducer<String, Team> producer = new KafkaProducer<String, Team>(properties)) {
+        try (KafkaProducer<String, Pet> producer = new KafkaProducer<String, Pet>(properties)) {
 
-        	Team team1 = new Team("Lakers", "Yellow, purple", "Los Angeles");        	
-            ProducerRecord<String, Team> record1 = new ProducerRecord<String, Team>(TOPIC, team1.getName().toString(), team1);
+        	Pet pet1 = new Pet(Kind.DOG, "Taïgo");        	
+            ProducerRecord<String, Pet> record1 = new ProducerRecord<String, Pet>(TOPIC, pet1.getName().toString(), pet1);
             
-            Team team2 = new Team("Knicks", "Blue, orange", "New York");        	
-            ProducerRecord<String, Team> record2 = new ProducerRecord<String, Team>(TOPIC, team2.getName().toString(), team2);
+            Pet pet2 = new Pet(Kind.FISH, "Grenade");        	
+            ProducerRecord<String, Pet> record2 = new ProducerRecord<String, Pet>(TOPIC, pet2.getName().toString(), pet2);
             
             producer.send(record1);
             producer.send(record2);
