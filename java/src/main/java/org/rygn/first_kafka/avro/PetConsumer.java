@@ -23,7 +23,7 @@ import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 
 public class PetConsumer {
 
-	private static final String TOPIC = "teams-topic";
+	private static final String TOPIC = "pets-topic";
 	
 	public static void main(String[] args) {
         Properties properties = new Properties();

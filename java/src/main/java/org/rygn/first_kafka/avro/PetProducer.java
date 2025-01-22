@@ -14,7 +14,7 @@ import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
 public class PetProducer {
 
-	private static final String TOPIC = "teams-topic";
+	private static final String TOPIC = "pets-topic";
 	
 	public static void main(String[] args){
         Properties properties = new Properties();
