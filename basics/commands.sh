@@ -1,5 +1,8 @@
 # launch kafka platform
-confluent local services start
+docker compose up
+
+# connect to broker
+docker exec -it broker sh
 
 # list topics
 kafka-topics --list --bootstrap-server localhost:9092
@@ -16,8 +19,8 @@ kafka-console-producer --topic example-topic --broker-list localhost:9092
 # create another consumer
 kafka-console-consumer --topic example-topic --bootstrap-server localhost:9092 --from-beginning
 
-# stop kafka platform
-confluent local services stop
+# delete topic
+kafka-topics --delete --topic example-topic --bootstrap-server localhost:9092
 
-# delete data
-confluent local destroy
+# stop kafka platform
+docker compose down
